@@ -12,8 +12,6 @@ import java.util.concurrent.Future;
 
 public class JokeFacade
 {
-
-
     public List<String> parallelRun(List<String> urls) throws ExecutionException, InterruptedException
     {
         ExecutorService es = Executors.newCachedThreadPool();
