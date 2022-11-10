@@ -21,7 +21,7 @@ public class CoctailResource
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
-        return "{\"msg\":\"Hello, coctail World\"}";
+        return "{\"msg\":\"Hello, coctail World!\"}";
     }
 
     @Path("getCoctail")
