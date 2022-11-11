@@ -1,8 +1,11 @@
 package dtos;
 
+import entities.Coctail;
+
 public class CoctailDTO
 {
 //    String idDrink;
+    int id;
     String strDrink;
     String strCategory;
     String strAlcoholic;
@@ -78,5 +81,46 @@ public class CoctailDTO
         this.strMeasure14 = strMeasure14;
         this.strMeasure15 = strMeasure15;
         this.strImageSource = strImageSource;
+    }
+
+    public CoctailDTO(Coctail coctail)
+    {
+        this.id = coctail.getId();
+        this.strDrink = coctail.getStrDrink();
+        this.strCategory = coctail.getStrCategory();
+        this.strAlcoholic = coctail.getStrAlcoholic();
+        this.strInstructions = coctail.getStrInstructions();
+        this.strDrinkThumb = coctail.getStrDrinkThumb();
+        this.strIngredient1 = coctail.getStrIngredient1();
+        this.strIngredient2 = coctail.getStrIngredient2();
+        this.strIngredient3 = coctail.getStrIngredient3();
+        this.strIngredient4 = coctail.getStrIngredient4();
+        this.strIngredient5 = coctail.getStrIngredient5();
+        this.strIngredient6 = coctail.getStrIngredient6();
+        this.strIngredient7 = coctail.getStrIngredient7();
+        this.strIngredient8 = coctail.getStrIngredient8();
+        this.strIngredient9 = coctail.getStrIngredient9();
+        this.strIngredient10 = coctail.getStrIngredient10();
+        this.strIngredient11 = coctail.getStrIngredient11();
+        this.strIngredient12 = coctail.getStrIngredient12();
+        this.strIngredient13 = coctail.getStrIngredient13();
+        this.strIngredient14 = coctail.getStrIngredient14();
+        this.strIngredient15 = coctail.getStrIngredient15();
+        this.strMeasure1 = coctail.getStrMeasure1();
+        this.strMeasure2 = coctail.getStrMeasure2();
+        this.strMeasure3 = coctail.getStrMeasure3();
+        this.strMeasure4 = coctail.getStrMeasure4();
+        this.strMeasure5 = coctail.getStrMeasure5();
+        this.strMeasure6 = coctail.getStrMeasure6();
+        this.strMeasure7 = coctail.getStrMeasure7();
+        this.strMeasure8 = coctail.getStrMeasure8();
+        this.strMeasure9 = coctail.getStrMeasure9();
+        this.strMeasure10 = coctail.getStrMeasure10();
+        this.strMeasure11 = coctail.getStrMeasure11();
+        this.strMeasure12 = coctail.getStrMeasure12();
+        this.strMeasure13 = coctail.getStrMeasure13();
+        this.strMeasure14 = coctail.getStrMeasure14();
+        this.strMeasure15 = coctail.getStrMeasure15();
+        this.strImageSource = coctail.getStrImageSource();
     }
 }

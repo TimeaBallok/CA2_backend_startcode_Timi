@@ -1,5 +1,7 @@
 package facades;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -8,6 +10,23 @@ import java.util.Scanner;
 
 public class CoctailFacade
 {
+    private static CoctailFacade instance;
+    private static EntityManagerFactory emf;
+
+    //Private Constructor to ensure Singleton
+    private CoctailFacade() {}
+
+    public static CoctailFacade getInstance(EntityManagerFactory _emf) {
+        if (instance == null) {
+            emf = _emf;
+            instance = new CoctailFacade();
+        }
+        return instance;
+    }
+
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
     public String fetchCoctails (String url) throws IOException
     {
         URL apiURL = new URL(url);

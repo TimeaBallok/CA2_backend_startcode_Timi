@@ -31,6 +31,9 @@ public class User implements Serializable {
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
 
+  @OneToMany(mappedBy = "coctail")
+  private List<Coctail> coctails = new ArrayList<>();
+
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
       return null;
