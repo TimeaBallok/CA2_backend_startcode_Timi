@@ -31,7 +31,7 @@ public class User implements Serializable {
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
 
-  @OneToMany(mappedBy = "coctail")
+  @OneToMany(mappedBy = "user")
   private List<Coctail> coctails = new ArrayList<>();
 
   public List<String> getRolesAsStrings() {
@@ -57,6 +57,14 @@ public class User implements Serializable {
     this.userPass = BCrypt.hashpw(userPass,BCrypt.gensalt());
   }
 
+
+  public User(String userName, String userPass, List<Role> roleList, List<Coctail> coctails)
+  {
+    this.userName = userName;
+    this.userPass = userPass;
+    this.roleList = roleList;
+    this.coctails = coctails;
+  }
 
   public String getUserName() {
     return userName;
@@ -84,6 +92,16 @@ public class User implements Serializable {
 
   public void addRole(Role userRole) {
     roleList.add(userRole);
+  }
+
+  public List<Coctail> getCoctails()
+  {
+    return coctails;
+  }
+
+  public void setCoctails(List<Coctail> coctails)
+  {
+    this.coctails = coctails;
   }
 
   @Override
