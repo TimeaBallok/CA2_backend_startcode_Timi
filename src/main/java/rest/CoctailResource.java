@@ -2,15 +2,15 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.CoctailDTO;
 import dtos.CoctailsDTO;
 import facades.CoctailFacade;
-import facades.FacadeExample;
 import utils.EMF_Creator;
-
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.util.List;
 
 @Path("/coctail")
 public class CoctailResource
@@ -35,6 +35,36 @@ public class CoctailResource
         String coctailJSON = FACADE.fetchCoctails(URL);
         CoctailsDTO coctailsDTO = GSON.fromJson(coctailJSON, CoctailsDTO.class);
         return GSON.toJson(coctailsDTO);
+    }
+
+    @Path("getCoctailsByUser/{userName}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public  String getCocatilsByUser(@PathParam("userName") String userName)
+    {
+        List<CoctailDTO> coctailDTOList = FACADE.getAllCoctailsByUser(userName);
+        return GSON.toJson(coctailDTOList);
+    }
+
+    @Path("countCoctailsByUser/{userName}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public  String countCocatilsByUser(@PathParam("userName") String userName)
+    {
+        long count = FACADE.countCoctailsPerUser(userName);
+        return "{\"count\":" + count + "}";
+    }
+
+    @PUT
+    @Path("addCoctail")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String addCoctail(String input)
+    {
+        CoctailDTO coctailDTO = GSON.fromJson(input, CoctailDTO.class);
+        coctailDTO.setUserName(coctailDTO.getUserName());
+        FACADE.addCoctail(coctailDTO);
+        return GSON.toJson(coctailDTO);
     }
 
 }

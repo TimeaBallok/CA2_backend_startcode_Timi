@@ -31,8 +31,19 @@ public class User implements Serializable {
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
 
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
   private List<Coctail> coctails = new ArrayList<>();
+
+  public List<Coctail> getCoctails()
+  {
+    return coctails;
+  }
+
+  public void setCoctails(List<Coctail> coctails)
+  {
+    this.coctails = coctails;
+  }
+
 
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
@@ -55,15 +66,6 @@ public class User implements Serializable {
   public User(String userName, String userPass) {
     this.userName = userName;
     this.userPass = BCrypt.hashpw(userPass,BCrypt.gensalt());
-  }
-
-
-  public User(String userName, String userPass, List<Role> roleList, List<Coctail> coctails)
-  {
-    this.userName = userName;
-    this.userPass = userPass;
-    this.roleList = roleList;
-    this.coctails = coctails;
   }
 
   public String getUserName() {
@@ -94,15 +96,6 @@ public class User implements Serializable {
     roleList.add(userRole);
   }
 
-  public List<Coctail> getCoctails()
-  {
-    return coctails;
-  }
-
-  public void setCoctails(List<Coctail> coctails)
-  {
-    this.coctails = coctails;
-  }
 
   @Override
   public boolean equals(Object o)
@@ -117,5 +110,9 @@ public class User implements Serializable {
   public int hashCode()
   {
     return Objects.hash(getUserName(), getUserPass(), getRoleList());
+  }
+
+  public void addCoctail(Coctail coctail) {
+    this.coctails.add(coctail);
   }
 }

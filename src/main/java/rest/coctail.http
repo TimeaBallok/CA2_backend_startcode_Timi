@@ -1,0 +1,29 @@
+GET http://localhost:8080/ca2/api/coctail/getCoctail
+Content-Type: application/json
+
+###
+PUT http://localhost:8080/ca2/api/coctail/addCoctail
+Content-Type: application/json
+
+{
+  "id": 0,
+  "strDrink": "Limona Corona",
+  "strCategory": "Beer",
+  "strAlcoholic": "Alcoholic",
+  "strInstructions": "Open the Corona. Fill the empty space in the neck in the bottle with the rum. The bottle should be filled to the top. Plug the bottle with your thumb or the palm of your hand. Turn the bottle upside-down so the rum and beer mix. Turn the bottle rightside-up, unplug, and drink.",
+  "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wwqrsw1441248662.jpg",
+  "strIngredient1": "Corona",
+  "strIngredient2": "Bacardi Limon",
+  "strMeasure1": "1 bottle ",
+  "strMeasure2": "1 oz ",
+  "userName": "user"
+}
+
+###
+GET http://localhost:8080/ca2/api/coctail/getCoctailsByUser/user
+Content-Type: application/json
+
+###
+GET http://localhost:8080/ca2/api/coctail/countCoctailsByUser/user
+Content-Type: application/json
+
